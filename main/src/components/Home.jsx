@@ -78,6 +78,14 @@ const Home = () => {
          textColor: "text-blue-600",
       },
       {
+         id: 13,
+         name: "Pattern Puzzle",
+         title: "Pattern Puzzle",
+         description: "Find the pattern and complete the sequence",
+         icon: FaPuzzlePiece,
+         textColor: "text-slate-600",
+      },
+      {
          id: 1,
          name: "MCQ",
          title: "Multiple Choice Questions",
@@ -124,14 +132,6 @@ const Home = () => {
          description: "Solve math problems to complete bingo",
          icon: FaDice,
          textColor: "text-violet-600",
-      },
-      {
-         id: 13,
-         name: "Pattern Puzzle",
-         title: "Pattern Puzzle",
-         description: "Find the pattern and complete the sequence",
-         icon: FaPuzzlePiece,
-         textColor: "text-slate-600",
       },
       {
          id: 14,
