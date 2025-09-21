@@ -1,0 +1,212 @@
+/* Shiny Button Styles */
+:root {
+   --s: 1; /* Scale factor */
+   --cursor: pointer;
+}
+
+.shiny-button {
+   position: relative;
+   text-align: center;
+   padding: 12px 20px;
+   border-radius: 12px;
+   outline: none;
+   border: none;
+   cursor: var(--cursor);
+   z-index: 2;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 6px;
+   background: linear-gradient(0deg, #ea4cda 0%, #fb2175 100%);
+   width: 100%;
+   font-weight: 600;
+   font-size: 16px;
+   transition: transform 0.2s ease;
+   min-height: 44px;
+}
+
+.shiny-button:hover {
+   transform: scale(1.05);
+}
+
+.shiny-button:active {
+   transform: scale(0.98);
+}
+
+.shiny-button p,
+.shiny-button span {
+   color: #ffffff;
+   font-size: 16px;
+   text-shadow: 0 1px 1px #000000;
+   margin: 0;
+   font-weight: 600;
+}
+
+.shiny-button::after {
+   position: absolute;
+   content: "";
+   left: 4px;
+   top: 4px;
+   width: calc(100% - 8px);
+   height: 40%;
+   background: rgba(255, 255, 255, 0.2);
+   border-radius: inherit;
+   transition: ease-in-out background 200ms;
+   z-index: 3;
+}
+
+.shiny-button::before {
+   position: absolute;
+   content: "";
+   display: inline-block;
+   top: 0;
+   left: -100%;
+   width: 60%;
+   height: 100%;
+   background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.9),
+      transparent
+   );
+   z-index: 5;
+   opacity: 0;
+   transform: skewX(-20deg);
+   transition: opacity 0.3s ease;
+}
+
+/* Only animate shine when parent card is hovered */
+.group:hover .shiny-button::before {
+   animation: shiny-btn1 2s ease-in-out infinite;
+   opacity: 1;
+}
+
+@-webkit-keyframes shiny-btn1 {
+   0% {
+      -webkit-transform: translateX(-100%) skewX(-20deg);
+      transform: translateX(-100%) skewX(-20deg);
+      opacity: 0;
+   }
+   20% {
+      opacity: 1;
+   }
+   40% {
+      -webkit-transform: translateX(300%) skewX(-20deg);
+      transform: translateX(300%) skewX(-20deg);
+      opacity: 0;
+   }
+   40.1%,
+   100% {
+      -webkit-transform: translateX(-100%) skewX(-20deg);
+      transform: translateX(-100%) skewX(-20deg);
+      opacity: 0;
+   }
+}
+
+@keyframes shiny-btn1 {
+   0% {
+      transform: translateX(-100%) skewX(-20deg);
+      opacity: 0;
+   }
+   20% {
+      opacity: 1;
+   }
+   40% {
+      transform: translateX(300%) skewX(-20deg);
+      opacity: 0;
+   }
+   40.1%,
+   100% {
+      transform: translateX(-100%) skewX(-20deg);
+      opacity: 0;
+   }
+}
+
+/* Variations for different sizes */
+.shiny-button-sm {
+   --s: 0.8;
+}
+
+.shiny-button-lg {
+   --s: 1.2;
+}
+
+/* Line Drawing Animations */
+@keyframes fadeIn {
+   0% {
+      opacity: 0;
+      transform: scale(0.8);
+   }
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
+}
+
+@keyframes drawLine {
+   0% {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      opacity: 1;
+   }
+   100% {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 0;
+      opacity: 0.9;
+   }
+}
+
+@keyframes drawWrongLine {
+   0% {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      opacity: 1;
+   }
+   50% {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 0;
+      opacity: 0.7;
+   }
+   100% {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 0;
+      opacity: 0;
+   }
+}
+
+@keyframes pulseCircle {
+   0% {
+      r: 2;
+      opacity: 0;
+      transform: scale(0);
+   }
+   50% {
+      r: 6;
+      opacity: 1;
+      transform: scale(1.2);
+   }
+   100% {
+      r: 5;
+      opacity: 0.8;
+      transform: scale(1);
+   }
+}
+
+.animate-fadeIn {
+   animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-drawLine {
+   animation: drawLine 0.8s ease-out forwards;
+}
+
+.animate-drawWrongLine {
+   animation: drawWrongLine 1.5s ease-out forwards;
+}
+
+.animate-pulseCircle {
+   animation: pulseCircle 0.5s ease-out forwards;
+}
