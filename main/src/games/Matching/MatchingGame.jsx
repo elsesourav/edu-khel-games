@@ -1,12 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { FaClock, FaHome, FaPlay, FaRandom, FaStar } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import "../../components/ShinyButton.css";
 import StarfieldCanvas from "../../components/StarfieldCanvas";
 import { matchingQuestions } from "../../data/questions";
 
-const MatchingGame = () => {
-   const navigate = useNavigate();
+const MatchingGame = ({ onBack }) => {
    const [gameStarted, setGameStarted] = useState(false);
    const [currentQuestion, setCurrentQuestion] = useState(0);
    const [timeLeft, setTimeLeft] = useState(60);
@@ -171,7 +169,7 @@ const MatchingGame = () => {
       }
    }, [shuffledTerms, shuffledDefinitions, updateAllPositions]);
 
-   const startGame = () => {
+   const startGame = ({ onBack }) => {
       setGameStarted(true);
       setTimeLeft(60);
       shuffleItems();
@@ -358,7 +356,7 @@ const MatchingGame = () => {
       );
    };
 
-   const resetGame = () => {
+   const resetGame = ({ onBack }) => {
       setCurrentQuestion(0);
       setScore(0);
       setShowResult(false);
@@ -429,7 +427,7 @@ const MatchingGame = () => {
                      </button>
 
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -527,7 +525,7 @@ const MatchingGame = () => {
                      </button>
 
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -553,7 +551,7 @@ const MatchingGame = () => {
             <div className="flex justify-between items-center mb-6">
                <div className="flex items-center gap-4">
                   <button
-                     onClick={() => navigate("/")}
+                     onClick={onBack}
                      className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                   >
                      <FaHome className="inline mr-2" />

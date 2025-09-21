@@ -8,7 +8,6 @@ import {
    FaRedo,
    FaTrophy,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import skyImage from "../../assets/imgs/sky.jpg";
 import "../../components/ShinyButton.css";
 import StarfieldCanvas from "../../components/StarfieldCanvas.jsx";
@@ -273,8 +272,7 @@ function GameScene({
    );
 }
 
-const BalloonDropGame = () => {
-   const navigate = useNavigate();
+const BalloonDropGame = ({ onBack }) => {
 
    const [gameStarted, setGameStarted] = useState(false);
    const [score, setScore] = useState(0);
@@ -433,7 +431,7 @@ const BalloonDropGame = () => {
                      </button>
 
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -498,7 +496,7 @@ const BalloonDropGame = () => {
                         <span className="relative z-10">Play Again</span>
                      </button>
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -523,7 +521,7 @@ const BalloonDropGame = () => {
          <div className="relative z-10 p-4">
             <div className="flex justify-between items-center">
                <button
-                  onClick={() => navigate("/")}
+                  onClick={onBack}
                   className="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 border border-white/20"
                >
                   <FaHome className="text-xl" />

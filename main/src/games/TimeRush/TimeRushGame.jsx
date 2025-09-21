@@ -8,7 +8,6 @@ import {
    FaStar,
    FaTrophy,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import "../../components/ShinyButton.css";
 import StarfieldCanvas from "../../components/StarfieldCanvas";
 
@@ -18,8 +17,7 @@ const difficultySettings = {
    hard: { timeLimit: 6, range: [1, 100], operations: ["+", "-", "×", "÷"] },
 };
 
-const TimeRushGame = () => {
-   const navigate = useNavigate();
+const TimeRushGame = ({ onBack }) => {
    const inputRef = useRef(null);
    const [gameStarted, setGameStarted] = useState(false);
    const [difficulty, setDifficulty] = useState("medium");
@@ -237,7 +235,7 @@ const TimeRushGame = () => {
                   <div className="w-full max-w-4xl mx-auto mb-6">
                      <div className="flex justify-between items-center">
                         <button
-                           onClick={() => navigate("/")}
+                           onClick={onBack}
                            className="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 border border-white/20"
                         >
                            <FaHome className="text-xl" />
@@ -325,7 +323,7 @@ const TimeRushGame = () => {
                            </button>
 
                            <button
-                              onClick={() => navigate("/")}
+                              onClick={onBack}
                               className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                            >
                               <FaHome className="inline mr-2" />
@@ -563,7 +561,7 @@ const TimeRushGame = () => {
                                     </span>
                                  </button>
                                  <button
-                                    onClick={() => navigate("/")}
+                                    onClick={onBack}
                                     className="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 border border-white/20 text-base"
                                  >
                                     <FaHome className="inline mr-2 text-sm" />

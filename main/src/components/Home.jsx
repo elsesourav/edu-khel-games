@@ -19,15 +19,12 @@ import {
    FaRuler,
    FaTh,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import iconImage from "../assets/imgs/icon.png";
 import GameCard from "./GameCard";
 import "./ShinyButton.css";
 import StarfieldCanvas from "./StarfieldCanvas";
 
-const Home = () => {
-   const navigate = useNavigate();
-
+const Home = ({ onNavigateToGame }) => {
    const games = [
       {
          id: 6,
@@ -176,7 +173,7 @@ const Home = () => {
    ];
 
    const handleGameClick = (gameName) => {
-      navigate(`/game/${gameName.toLowerCase().replace(/\s+/g, "-")}`);
+      onNavigateToGame(gameName.toLowerCase().replace(/\s+/g, "-"));
    };
 
    return (

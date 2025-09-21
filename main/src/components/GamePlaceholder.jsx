@@ -1,9 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
-
-const GamePlaceholder = () => {
-   const navigate = useNavigate();
-   const { gameName } = useParams();
-
+const GamePlaceholder = ({ gameName, onBack }) => {
    const gameInfo = {
       "balloon-drop": {
          title: "Balloon Drop",
@@ -116,7 +111,7 @@ const GamePlaceholder = () => {
 
             <button
                className="bg-gray-600 text-white py-3 px-6 rounded-2xl text-base hover:bg-gray-700 transition-colors"
-               onClick={() => navigate("/")}
+               onClick={onBack}
             >
                ← Back to Home
             </button>

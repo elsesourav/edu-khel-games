@@ -7,13 +7,11 @@ import {
    FaStar,
    FaTimes,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import "../../components/ShinyButton.css";
 import StarfieldCanvas from "../../components/StarfieldCanvas";
 import { mcqQuestions } from "../../data/questions";
 
-const MCQGame = () => {
-   const navigate = useNavigate();
+const MCQGame = ({ onBack }) => {
    const [currentQuestion, setCurrentQuestion] = useState(0);
    const [selectedAnswer, setSelectedAnswer] = useState(null);
    const [score, setScore] = useState(0);
@@ -144,7 +142,7 @@ const MCQGame = () => {
                      </button>
 
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -222,7 +220,7 @@ const MCQGame = () => {
                         <span className="relative z-10">Play Again</span>
                      </button>
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -250,7 +248,7 @@ const MCQGame = () => {
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
                <button
-                  onClick={() => navigate("/")}
+                  onClick={onBack}
                   className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                >
                   <FaHome className="inline mr-2" />

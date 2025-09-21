@@ -8,13 +8,11 @@ import {
    FaRedo,
    FaStar,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import "../../components/ShinyButton.css";
 import StarfieldCanvas from "../../components/StarfieldCanvas";
 import { wordScrambleQuestions } from "../../data/questions";
 
-const WordScrambleGame = () => {
-   const navigate = useNavigate();
+const WordScrambleGame = ({ onBack }) => {
    const [gameStarted, setGameStarted] = useState(false);
    const [currentQuestion, setCurrentQuestion] = useState(0);
    const [timeLeft, setTimeLeft] = useState(120); // 2 minutes per word
@@ -272,13 +270,13 @@ const WordScrambleGame = () => {
       }
    }, [gameStarted, currentQuestion, initializeQuestion]);
 
-   const startGame = () => {
+   const startGame = ({ onBack }) => {
       setGameStarted(true);
       setTimeLeft(120);
       initializeQuestion();
    };
 
-   const resetGame = () => {
+   const resetGame = ({ onBack }) => {
       setCurrentQuestion(0);
       setScore(0);
       setShowResult(false);
@@ -363,7 +361,7 @@ const WordScrambleGame = () => {
                      </button>
 
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -441,7 +439,7 @@ const WordScrambleGame = () => {
                         <span className="relative z-10">Play Again</span>
                      </button>
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -468,7 +466,7 @@ const WordScrambleGame = () => {
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
                <button
-                  onClick={() => navigate("/")}
+                  onClick={onBack}
                   className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                >
                   <FaHome className="inline mr-2" />

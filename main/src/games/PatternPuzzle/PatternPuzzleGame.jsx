@@ -9,7 +9,6 @@ import {
    FaStar,
    FaTrophy,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import "../../components/ShinyButton.css";
 import StarfieldCanvas from "../../components/StarfieldCanvas";
 
@@ -19,8 +18,7 @@ const difficultySettings = {
    hard: { patternLength: 6, optionsCount: 5, timeLimit: 20 },
 };
 
-const PatternPuzzleGame = () => {
-   const navigate = useNavigate();
+const PatternPuzzleGame = ({ onBack }) => {
    const [gameStarted, setGameStarted] = useState(false);
    const [difficulty, setDifficulty] = useState("medium");
    const [level, setLevel] = useState(1);
@@ -389,7 +387,7 @@ const PatternPuzzleGame = () => {
                <div className="w-full max-w-4xl mx-auto mb-8">
                   <div className="flex justify-between items-center mb-6">
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300"
                      >
                         <FaHome className="text-lg" />
@@ -657,7 +655,7 @@ const PatternPuzzleGame = () => {
                                  Play Again
                               </button>
                               <button
-                                 onClick={() => navigate("/")}
+                                 onClick={onBack}
                                  className="flex items-center gap-2 px-5 py-2.5 text-sm bg-white/10 backdrop-blur-xl rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
                               >
                                  <FaHome />

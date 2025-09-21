@@ -8,13 +8,11 @@ import {
    FaStar,
    FaTimes,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import "../../components/ShinyButton.css";
 import StarfieldCanvas from "../../components/StarfieldCanvas";
 import { msqQuestions } from "../../data/questions";
 
-const MSQGame = () => {
-   const navigate = useNavigate();
+const MSQGame = ({ onBack }) => {
    const [currentQuestion, setCurrentQuestion] = useState(0);
    const [selectedAnswers, setSelectedAnswers] = useState([]);
    const [score, setScore] = useState(0);
@@ -76,7 +74,7 @@ const MSQGame = () => {
       }
    }, [timeLeft, gameStarted, showResult, answered, handleSubmitAnswer]);
 
-   const startGame = () => {
+   const startGame = ({ onBack }) => {
       setGameStarted(true);
       setTimeLeft(45);
    };
@@ -93,7 +91,7 @@ const MSQGame = () => {
       });
    };
 
-   const resetGame = () => {
+   const resetGame = ({ onBack }) => {
       setCurrentQuestion(0);
       setSelectedAnswers([]);
       setScore(0);
@@ -177,7 +175,7 @@ const MSQGame = () => {
                      </button>
 
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -255,7 +253,7 @@ const MSQGame = () => {
                         <span className="relative z-10">Play Again</span>
                      </button>
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -283,7 +281,7 @@ const MSQGame = () => {
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
                <button
-                  onClick={() => navigate("/")}
+                  onClick={onBack}
                   className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                >
                   <FaHome className="inline mr-2" />

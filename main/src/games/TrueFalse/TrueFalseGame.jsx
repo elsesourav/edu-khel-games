@@ -8,13 +8,11 @@ import {
    FaStar,
    FaTimes,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import "../../components/ShinyButton.css";
 import StarfieldCanvas from "../../components/StarfieldCanvas";
 import { trueFalseQuestions } from "../../data/questions";
 
-const TrueFalseGame = () => {
-   const navigate = useNavigate();
+const TrueFalseGame = ({ onBack }) => {
    const [gameStarted, setGameStarted] = useState(false);
    const [currentQuestion, setCurrentQuestion] = useState(0);
    const [timeLeft, setTimeLeft] = useState(30); // 30 seconds per question
@@ -78,12 +76,12 @@ const TrueFalseGame = () => {
       }
    }, [timeLeft, gameStarted, showResult, answered, handleNextQuestion]);
 
-   const startGame = () => {
+   const startGame = ({ onBack }) => {
       setGameStarted(true);
       setTimeLeft(30);
    };
 
-   const resetGame = () => {
+   const resetGame = ({ onBack }) => {
       setCurrentQuestion(0);
       setScore(0);
       setShowResult(false);
@@ -150,7 +148,7 @@ const TrueFalseGame = () => {
                      </button>
 
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -243,7 +241,7 @@ const TrueFalseGame = () => {
                      </button>
 
                      <button
-                        onClick={() => navigate("/")}
+                        onClick={onBack}
                         className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                      >
                         <FaHome className="inline mr-2" />
@@ -271,7 +269,7 @@ const TrueFalseGame = () => {
             <div className="flex justify-between items-center mb-6">
                <div className="flex items-center gap-4">
                   <button
-                     onClick={() => navigate("/")}
+                     onClick={onBack}
                      className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 border border-white/20"
                   >
                      <FaHome className="inline mr-2" />
